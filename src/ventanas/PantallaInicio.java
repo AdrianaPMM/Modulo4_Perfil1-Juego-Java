@@ -7,6 +7,9 @@ package ventanas;
 import fonts.Fuentes;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.sound.sampled.*;
+
+import java.io.File;
 
 /**
  *
@@ -21,6 +24,8 @@ public class PantallaInicio extends javax.swing.JFrame {
     public PantallaInicio() {
         initComponents();
         fontDesign();
+        
+      
     }
 
      
@@ -63,6 +68,14 @@ public class PantallaInicio extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(java.awt.Color.black);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setPreferredSize(new java.awt.Dimension(1300, 650));
@@ -103,7 +116,31 @@ public class PantallaInicio extends javax.swing.JFrame {
         Principal1 P1 = new Principal1();
         P1.setVisible(true);
         this.setVisible(false);
+        
+
     }//GEN-LAST:event_btnComenzarMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+        
+        //Ruta de musica
+        String filePath = "src/Musica/MusicaFondo.wav";
+        
+        //Cargar musica
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filePath));
+        Clip clip = AudioSystem.getClip();
+        
+        //Para poder reproducirlo
+        clip.open(audioInputStream);
+        clip.start();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        //Pequeño error, nada importante
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
