@@ -59,7 +59,7 @@
         <Component class="javax.swing.JButton" name="btnComenzar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/recursos_img/KoaRBtn1.png"/>
+              <Image iconType="3" name="/recursos_img/KoaRBtn2.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>

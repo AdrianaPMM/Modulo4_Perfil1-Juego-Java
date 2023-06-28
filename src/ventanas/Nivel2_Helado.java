@@ -10,7 +10,7 @@ import java.awt.Label;
  *
  * @author abc
  */
-public class NivelHelado extends javax.swing.JPanel {
+public class Nivel2_Helado extends javax.swing.JPanel {
 
     /**
      * Creates new form NivelHelado
@@ -18,7 +18,7 @@ public class NivelHelado extends javax.swing.JPanel {
     MovimientoPersonaje movimientoPersonaje;
     Hilos hilos;
     String estPersonaje="ESTATICO";
-    public NivelHelado() {
+    public Nivel2_Helado() {
         initComponents();
         movimientoPersonaje = new MovimientoPersonaje(this);
         this.addKeyListener(movimientoPersonaje);

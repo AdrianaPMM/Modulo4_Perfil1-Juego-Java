@@ -15,8 +15,8 @@ import java.awt.event.KeyListener;
  */
 public class MovimientoPersonaje implements ActionListener, KeyListener{
     
-    NivelHelado nivelHelado;
-    public MovimientoPersonaje(NivelHelado nivelHelado){
+    Nivel2_Helado nivelHelado;
+    public MovimientoPersonaje(Nivel2_Helado nivelHelado){
         this.nivelHelado = nivelHelado;
     }
     

@@ -11,8 +11,8 @@ package ventanas;
 
 public class Hilos extends Thread{
     
-    NivelHelado nivelHelado;
-    public Hilos(NivelHelado nivelHelado){
+    Nivel2_Helado nivelHelado;
+    public Hilos(Nivel2_Helado nivelHelado){
         
         this.nivelHelado=nivelHelado;
     }

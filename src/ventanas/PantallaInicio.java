@@ -28,7 +28,6 @@ public class PantallaInicio extends javax.swing.JFrame {
       
     }
 
-     
     private void fontDesign()
     {      
         tipoFuentes = new Fuentes();
@@ -81,7 +80,7 @@ public class PantallaInicio extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(1300, 650));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnComenzar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRBtn1.png"))); // NOI18N
+        btnComenzar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRBtn2.png"))); // NOI18N
         btnComenzar.setBorderPainted(false);
         btnComenzar.setContentAreaFilled(false);
         btnComenzar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,8 +115,6 @@ public class PantallaInicio extends javax.swing.JFrame {
         Principal1 P1 = new Principal1();
         P1.setVisible(true);
         this.setVisible(false);
-        
-
     }//GEN-LAST:event_btnComenzarMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

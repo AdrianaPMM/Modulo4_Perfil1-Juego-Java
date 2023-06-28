@@ -4,19 +4,163 @@
  */
 package ventanas;
 
-/**
- *
- * @author Paola Mejia
- */
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JButton;
+
 public class Principal1 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal1
-     */
+    Comic comic = new Comic();
+    MapaNiveles mapaNiveles = new MapaNiveles();
+    Tutorial tutorial = new Tutorial();
+    
+    Nivel1_Bosque nvl1 = new Nivel1_Bosque();
+    Nivel2_Helado nvl2 = new Nivel2_Helado();
+    Nivel3_Fuego nvl3 = new Nivel3_Fuego();
+    Nivel4_Arena nvl4 = new Nivel4_Arena();
+    Nivel5_Nubes nvl5 = new Nivel5_Nubes();
+    Nivel6_Galaxia nvl6 = new Nivel6_Galaxia();
+    
+    private CardLayout cardLayout;
     public Principal1() {
         initComponents();
+        //Ponemos cardLayout
+        cardLayout = new CardLayout();
+        pnlPrincipal.setLayout(cardLayout);
+        //Agregamos toooodas los Jpanels al pnlPrincipal
+        pnlPrincipal.add(comic, "comic");
+        pnlPrincipal.add(tutorial, "tutorial");
+        pnlPrincipal.add(mapaNiveles, "mapaNiveles");
+        
+        pnlPrincipal.add(nvl1, "nvl1");
+        pnlPrincipal.add(nvl2, "nvl2");
+        pnlPrincipal.add(nvl3, "nvl3");
+        pnlPrincipal.add(nvl4, "nvl4");
+        pnlPrincipal.add(nvl5, "nvl5");
+        pnlPrincipal.add(nvl6, "nvl6");
+   
+        LeerProgreso();
+
+    }
+    
+    public void LeerProgreso()
+    {
+         try{
+            
+            String query = "Select * From tbProgreso";    
+            PreparedStatement readCorreo = ConexionSQL.getConnection().prepareStatement(query);
+            
+            ResultSet rs = readCorreo.executeQuery();
+            
+            if (rs.next()) {
+                //System.out.println("Hay registros en la tabla");
+                //Si hay algo, es porque ha jugado minimo el tutorial,
+                //Por eso, va directamente al mapa, mostramos, mapa
+                cardLayout.show(pnlPrincipal, "mapaNiveles");
+
+            } else {
+                //System.out.println("No hay registros en la tabla");
+                //Si no hay nada, es que,no ha jugado nada
+                //por eso, iria al comic, y, desde el comic, al tutorial
+                //o sea, el tutorial solo aparece, si es que se vio el comic primero
+                //porque pues, primer udo velda
+                cardLayout.show(pnlPrincipal, "comic");
+                getBtndeComic(); //Se consigue el btn que esta en el panel de Comic
+                //Y despues, del tutorial, al mapa de nieveles
+
+                
+            }  
+        }catch(Exception e){
+            System.out.println("ERROR en el query readCorreo: " + e.toString());
+        }
+    }
+    
+    public void getBtndeComic()
+    {
+        JButton btnSiguiente1 = comic.getBtnSiguiente();
+        //aqui digo que, despues de "terminar de leer el comic"
+        //osea cuando le de a "siguiente"
+        //Muestre la pantalla del tutorial
+         btnSiguiente1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(pnlPrincipal, "tutorial");
+                
+                //y despues de que se hizo el tutorial, pase al mapa de niveles
+                //conseguimos btn
+                 getBtndeTutorial();
+            }
+        });
     }
 
+    public void getBtndeTutorial()
+    {
+         JButton btnSiguiente2 = tutorial.getBtnSiguiente();
+          //Mostramos mapa de niveles (cuando se le de clic al btn de Siguiente 2)
+          btnSiguiente2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(pnlPrincipal, "mapaNiveles");
+                
+                //y ahora, conseguimos tooodos los btns de los niveles
+                getBtnsdeMapaNiveles();
+    
+            }
+        });
+    }
+    
+    public void getBtnsdeMapaNiveles()
+    {
+        JButton btnNvl1 = mapaNiveles.getBtnNvl1();
+        JButton btnNvl2 = mapaNiveles.getBtnNvl2();
+        JButton btnNvl3 = mapaNiveles.getBtnNvl3();
+        JButton btnNvl4 = mapaNiveles.getBtnNvl4();
+        JButton btnNvl5 = mapaNiveles.getBtnNvl5();
+        JButton btnNvl6 = mapaNiveles.getBtnNvl6();
+        
+        //y, por ultimo, agregamos el evento "clic" a cada uno
+        //osea, le ponemos lo que va a hacer, cuando al boton que 
+        //conseguimos antes se le de clic
+        
+         btnNvl1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(pnlPrincipal, "nvl1");
+                   //cuando se le de al btn Del nivel 1, muestre,
+                   //el panel del nivel 1, y asi sucesivamente
+            }
+        });
+         
+          btnNvl2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(pnlPrincipal, "nvl2");
+            }
+        });
+          
+           btnNvl3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(pnlPrincipal, "nvl3");
+            }
+        });
+           
+             btnNvl4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(pnlPrincipal, "nvl4");
+            }
+        });
+             
+         btnNvl5.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            cardLayout.show(pnlPrincipal, "nvl5");
+        }
+        });
+         
+         btnNvl6.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            cardLayout.show(pnlPrincipal, "nvl6");
+        }
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
