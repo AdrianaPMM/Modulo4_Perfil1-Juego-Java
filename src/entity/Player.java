@@ -36,7 +36,7 @@ public class Player extends Entity{
         playerCabraY = 470;
         playerAranaY = 500;
         
-        speed = 6;
+        speed = 5;
         directionCabra = "derecha";
         directionArana = "derecha";
     }
@@ -82,65 +82,111 @@ public class Player extends Entity{
     
     public void Update()
     {
-        //Controles de CABRA
-        if(keyH.upPressed == true)
-        {
-            if(count == 0){
-            directionCabra = "salto";
-            jump(1);} else{}
-        }
-        if (keyH.rightPressed)
-        {
-            directionCabra = "derecha";
-            playerCabraX += speed;
-        }
-        if (keyH.leftPressed)
-        {
-            directionCabra = "izquierda";
-            playerCabraX -= speed;
-        }
+        if(keyH.upPressed == true 
+          || keyH.rightPressed == true
+          || keyH.leftPressed == true)
+        {    
+            //Controles de CABRA
+            if(keyH.upPressed == true)
+            {
+                if(count == 0){
+                directionCabra = "salto";
+                jump(1);} else{}
+            }
+            if (keyH.rightPressed)
+            {
+                directionCabra = "derecha";
+                playerCabraX += speed;
+            }
+            if (keyH.leftPressed)
+            {
+                directionCabra = "izquierda";
+                playerCabraX -= speed;
+            }
+            spriteCabraCount++;
+            if(spriteCabraCount>7)
+            {
+                if(spriteCabraNum == 1){spriteCabraNum = 2;}
+                else if(spriteCabraNum == 2) {spriteCabraNum = 3;}
+                else if(spriteCabraNum == 3) {spriteCabraNum = 1;}
+
+                spriteCabraCount = 0;
+            } else{}
+        } else {spriteCabraNum = 1;}
         
-        //Controles de ARANA
-          if(keyH.upPressedW == true)
+        if(keyH.upPressedW == true
+           || keyH.rightPressedD == true
+           || keyH.leftPressedA == true)
         {
-            if(count2 == 0){
-            directionArana = "salto";
-            jump(2);} else{}
-        }
-        if (keyH.rightPressedD)
-        {
-            directionArana = "derecha";
-            playerAranaX += speed;
-        }
-        if (keyH.leftPressedA)
-        {
-            directionArana = "izquierda";
-            playerAranaX -= speed;
-        }
+            //Controles de ARANA
+              if(keyH.upPressedW == true)
+            {
+                if(count2 == 0){
+                directionArana = "salto";
+                jump(2);} else{}
+            }
+            if (keyH.rightPressedD)
+            {
+                directionArana = "derecha";
+                playerAranaX += speed;
+            }
+            if (keyH.leftPressedA)
+            {
+                directionArana = "izquierda";
+                playerAranaX -= speed;
+            }
+            spriteAranaCount++;
+
+             if(spriteAranaCount>4)
+            {
+                if(spriteAranaNum == 1){spriteAranaNum = 2;}
+                else if(spriteAranaNum == 2) {spriteAranaNum = 3;}
+                else if(spriteAranaNum == 3) {spriteAranaNum = 4;}
+                else if(spriteAranaNum == 4) {spriteAranaNum = 5;}
+                else if(spriteAranaNum == 5) {spriteAranaNum = 1;}
+
+                spriteAranaCount = 0;
+            }else{}
+        } else {spriteAranaNum = 1;}
     }
        
    
     BufferedImage imageCabra = null;
     public void directionKabra()
-    {
-        if(keyH.upPressed && directionCabra.equals("derecha")){imageCabra = cabra1DRC;}
-        if(keyH.upPressed && directionCabra.equals("izquierda")){imageCabra = cabra1IZQ;}
-        if(keyH.upPressed && keyH.rightPressed){imageCabra = cabra1DRC;}
-        if(keyH.upPressed && keyH.leftPressed) {imageCabra = cabra1IZQ;}
-        if(directionCabra.equals("derecha")){imageCabra = cabra1DRC;}
-        if(directionCabra.equals("izquierda")){imageCabra = cabra1IZQ;}
+    {    
+        if(directionCabra.equals("derecha"))
+        {
+          if(spriteCabraNum == 1) {imageCabra = cabra1DRC;}
+          if(spriteCabraNum == 2) {imageCabra = cabra2DRC;}
+          if(spriteCabraNum == 3) {imageCabra = cabra3DRC;}      
+        }
+        if(directionCabra.equals("izquierda"))
+        {
+           if(spriteCabraNum == 1) {imageCabra = cabra1IZQ;}
+           if(spriteCabraNum == 2) {imageCabra = cabra2IZQ;}
+           if(spriteCabraNum == 3) {imageCabra = cabra3IZQ;} 
+        }
     }
     
     BufferedImage imageArana = null;
     public void directionAragna()
-    {
-        if(keyH.upPressedW && directionArana.equals("derecha")){imageArana = arana1DRC;}
-        if(keyH.upPressedW && directionArana.equals("izquierda")){imageArana = arana1IZQ;}
-        if(keyH.upPressedW && keyH.rightPressedD){imageArana = arana1DRC;}
-        if(keyH.upPressedW && keyH.leftPressedA) {imageArana = arana1IZQ;}
-        if(directionArana.equals("derecha")){imageArana = arana1DRC;}
-        if(directionArana.equals("izquierda")){imageArana = arana1IZQ;}
-       
+    {        
+        if(directionArana.equals("derecha"))
+        {
+            if(spriteAranaNum == 1) {imageArana = arana1DRC;}
+            if(spriteAranaNum == 2) {imageArana = arana2DRC;}
+            if(spriteAranaNum == 3) {imageArana = arana3DRC;}
+            if(spriteAranaNum == 4) {imageArana = arana4DRC;}
+            if(spriteAranaNum == 5) {imageArana = arana5DRC;}
+        }
+        if(directionArana.equals("izquierda"))
+        {
+            if(spriteAranaNum == 1) {imageArana = arana1IZQ;}
+            if(spriteAranaNum == 2) {imageArana = arana2IZQ;}
+            if(spriteAranaNum == 3) {imageArana = arana3IZQ;}
+            if(spriteAranaNum == 4) {imageArana = arana4IZQ;}
+            if(spriteAranaNum == 5) {imageArana = arana5IZQ;}
+        }
     }
     
     public void Draw(Graphics2D g2, Graphics2D g4)

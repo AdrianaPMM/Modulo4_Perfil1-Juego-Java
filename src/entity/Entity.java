@@ -18,4 +18,10 @@ public class Entity {
     
     public String directionCabra;
     public String directionArana;
+    
+    public int spriteCabraCount = 0;
+    public int spriteCabraNum = 1;
+    
+    public int spriteAranaCount = 0;
+    public int spriteAranaNum = 1;
 }
