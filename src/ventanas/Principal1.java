@@ -5,6 +5,7 @@
 package ventanas;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
@@ -26,6 +27,21 @@ public class Principal1 extends javax.swing.JFrame {
     
     private CardLayout cardLayout;
     public Principal1() {
+        
+        final int originalTileSize = 10;
+        final int scale = 5;
+        
+        final int tileSize = originalTileSize * scale;
+        final int maxScreenCol = 26;
+        final int maxScreenRow = 13;
+        
+        final int screenWidth = tileSize * maxScreenCol;
+        final int screenHeight = tileSize * maxScreenRow;
+        
+        //this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+        
+        this.pack();
+        
         initComponents();
         //Ponemos cardLayout
         cardLayout = new CardLayout();
@@ -87,9 +103,7 @@ public class Principal1 extends javax.swing.JFrame {
          btnSiguiente1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(pnlPrincipal, "tutorial");
-                
-                //y despues de que se hizo el tutorial, pase al mapa de niveles
-                //conseguimos btn
+                tutorial.startGameThread();
                  getBtndeTutorial();
             }
         });
@@ -97,9 +111,9 @@ public class Principal1 extends javax.swing.JFrame {
 
     public void getBtndeTutorial()
     {
-         JButton btnSiguiente2 = tutorial.getBtnSiguiente();
+         //JButton btnSiguiente2 = tutorial.getBtnSiguiente();
           //Mostramos mapa de niveles (cuando se le de clic al btn de Siguiente 2)
-          btnSiguiente2.addActionListener(new ActionListener() {
+          /*btnSiguiente2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(pnlPrincipal, "mapaNiveles");
                 
@@ -107,7 +121,7 @@ public class Principal1 extends javax.swing.JFrame {
                 getBtnsdeMapaNiveles();
     
             }
-        });
+        });*/
     }
     
     public void getBtnsdeMapaNiveles()
@@ -173,7 +187,9 @@ public class Principal1 extends javax.swing.JFrame {
         pnlPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Koa's Adventure");
 
+        pnlPrincipal.setPreferredSize(new java.awt.Dimension(1300, 650));
         pnlPrincipal.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -5,6 +5,10 @@
 package ventanas;
 
 import fonts.Fuentes;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
@@ -12,27 +16,40 @@ import javax.swing.SwingConstants;
  *
  * @author Paola Mejia
  */
-public class Tutorial extends javax.swing.JPanel {
+public class Tutorial extends javax.swing.JPanel implements Runnable {
 
     /**
      * Creates new form Tutorial
      */
     Fuentes tipoFuentes;
-    public Tutorial() {
+    Thread gameThread;
+     
+    final int originalTileSize = 35;
+    final int scale = 2;
+        
+   final int tileSize = originalTileSize * scale;
+     final int tileSizeW = originalTileSize * scale + 35;
+     
+    public Tutorial() { 
         initComponents();
         fontDesign();
     }
 
+    public void startGameThread()
+    {
+        gameThread = new Thread(this);
+        gameThread.start();
+    }
     
      private void fontDesign()
     {      
         tipoFuentes = new Fuentes();
        // jLabel1.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 35));
-        jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
+        //jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 
        
-        btnSiguiente1.setText("<html><font color='white'> Siguiente </font></html>");
-        caracBtn(btnSiguiente1);
+        //btnSiguiente1.setText("<html><font color='white'> Siguiente </font></html>");
+        //caracBtn(btnSiguiente1);
     }
         
     
@@ -53,63 +70,52 @@ public class Tutorial extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        btnSiguiente1 = new javax.swing.JButton();
-
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("TUTORIAL");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, -1));
-
-        btnSiguiente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRBtn2.png"))); // NOI18N
-        btnSiguiente1.setBorderPainted(false);
-        btnSiguiente1.setContentAreaFilled(false);
-        btnSiguiente1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSiguiente1MouseClicked(evt);
-            }
-        });
-        btnSiguiente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguiente1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnSiguiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 240, 90));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
-        );
+        setBackground(new java.awt.Color(51, 51, 51));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSiguiente1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguiente1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSiguiente1MouseClicked
-
-    private void btnSiguiente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguiente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSiguiente1ActionPerformed
-
-    public JButton getBtnSiguiente()
-    {
-        return btnSiguiente1;
-    }
+    //public JButton getBtnSiguiente()
+    //{
+        //return btnSiguiente1;
+    //}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSiguiente;
-    private javax.swing.JButton btnSiguiente1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+        
+        while(gameThread != null)
+        {
+            //Se usara para actualizar la posicion del personaje en el juego
+            Update();
+            //Y para "dibujar" en la pantalla la informacion actualizada
+            repaint();
+        }
+        
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public void Update()
+    {
+        //System.out.println("UPDATE"); 
+    }
+    
+    public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+             
+        //Cabra
+        Graphics2D g2 = (Graphics2D)g;
+        g2.setColor(Color.white);
+        g2.fillRect(200,200, tileSizeW, tileSize);
+        
+        //Arana
+        Graphics2D g4 = (Graphics2D)g;
+        g4.setColor(Color.red);
+        g4.fillRect(100,100, tileSizeW, tileSize);
+        
+        g2.dispose();
+        g4.dispose();
+    }
 }
