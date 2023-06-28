@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
@@ -18,21 +20,39 @@ import javax.swing.SwingConstants;
  */
 public class Tutorial extends javax.swing.JPanel implements Runnable {
 
-    /**
-     * Creates new form Tutorial
-     */
+    //FPS
+    int FPS = 60;
+    
+    KeyHandler KeyH = new KeyHandler();
+    
     Fuentes tipoFuentes;
     Thread gameThread;
      
-    final int originalTileSize = 35;
-    final int scale = 2;
+    //final int originalTileSize = 50;
+    //final int scale = 2;
         
-   final int tileSize = originalTileSize * scale;
-     final int tileSizeW = originalTileSize * scale + 35;
+   final int tileSize1 = 200;
+    final int tileSizeW1 = 160;
+    
+    final int tileSize2 = 200;
+    final int tileSizeW2 = 130;
      
+    //Posision por defecto de los jugadores
+    int playerCabraX = 100;
+    int playerCabraY = 470;
+            
+    int playerAranaX = 250;
+    int playerAranaY = 500;
+    
+    int Player2Speed = 6;
+    
     public Tutorial() { 
         initComponents();
         fontDesign();
+        this.addKeyListener(KeyH);
+        this.setFocusable(true);
+        this.requestFocusInWindow();
+        this.requestFocus();
     }
 
     public void startGameThread()
@@ -43,7 +63,7 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
     
      private void fontDesign()
     {      
-        tipoFuentes = new Fuentes();
+        //tipoFuentes = new Fuentes();
        // jLabel1.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 35));
         //jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -87,10 +107,31 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
         
         while(gameThread != null)
         {
-            //Se usara para actualizar la posicion del personaje en el juego
+            double drawInterval = 1000000000/FPS; //0.01666
+            double nextDrawTime = System.nanoTime() + drawInterval;
+            
+            //Se usara para actualizar la posicion de los personajes en el juego
             Update();
             //Y para "dibujar" en la pantalla la informacion actualizada
             repaint();
+            
+            try {
+                
+                double remainingTime = nextDrawTime - System.nanoTime();
+                remainingTime = remainingTime/1000000;
+                
+                if(remainingTime < 0)
+                {
+                    remainingTime = 0;
+                }
+                
+                Thread.sleep((long)remainingTime);
+                
+                nextDrawTime += drawInterval;
+                
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Tutorial.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -98,7 +139,33 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
     
     public void Update()
     {
-        //System.out.println("UPDATE"); 
+        //Controles de CABRA
+        if(KeyH.upPressed == true)
+        {
+            playerCabraY = playerCabraY - 5;
+        }
+        else if (KeyH.rightPressed)
+        {
+            playerCabraX += Player2Speed;
+        }
+        else if (KeyH.leftPressed)
+        {
+            playerCabraX -= Player2Speed;
+        }
+        
+        //Controles de ARANA
+          if(KeyH.upPressedW == true)
+        {
+            playerAranaY = playerAranaY - 5;
+        }
+        else if (KeyH.rightPressedD)
+        {
+            playerAranaX += Player2Speed;
+        }
+        else if (KeyH.leftPressedA)
+        {
+            playerAranaX -= Player2Speed;
+        }
     }
     
     public void paintComponent(Graphics g)
@@ -108,12 +175,12 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
         //Cabra
         Graphics2D g2 = (Graphics2D)g;
         g2.setColor(Color.white);
-        g2.fillRect(200,200, tileSizeW, tileSize);
+        g2.fillRect(playerCabraX, playerCabraY, tileSize1, tileSizeW1);
         
         //Arana
         Graphics2D g4 = (Graphics2D)g;
         g4.setColor(Color.red);
-        g4.fillRect(100,100, tileSizeW, tileSize);
+        g4.fillRect(playerAranaX, playerAranaY, tileSize2, tileSizeW2);
         
         g2.dispose();
         g4.dispose();

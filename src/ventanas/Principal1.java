@@ -41,6 +41,7 @@ public class Principal1 extends javax.swing.JFrame {
         //this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         
         this.pack();
+        this.requestFocusInWindow();
         
         initComponents();
         //Ponemos cardLayout
@@ -104,6 +105,7 @@ public class Principal1 extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(pnlPrincipal, "tutorial");
                 tutorial.startGameThread();
+                tutorial.requestFocusInWindow();
                  getBtndeTutorial();
             }
         });
