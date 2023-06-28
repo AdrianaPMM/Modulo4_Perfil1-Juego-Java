@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 /**
  *
@@ -32,7 +33,7 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
     //final int scale = 2;
         
    final int tileSize1 = 200;
-    final int tileSizeW1 = 160;
+   final int tileSizeW1 = 160;
     
     final int tileSize2 = 200;
     final int tileSizeW2 = 130;
@@ -45,15 +46,18 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
     int playerAranaY = 500;
     
     int Player2Speed = 6;
-    
+    private boolean isJumpingCabra = false;
+    private boolean isJumpingArana = false;
+        
     public Tutorial() { 
         initComponents();
         fontDesign();
+        
         this.addKeyListener(KeyH);
         this.setFocusable(true);
         this.requestFocusInWindow();
         this.requestFocus();
-    }
+    }   
 
     public void startGameThread()
     {
@@ -102,53 +106,147 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void run() {
+    @Override   
+    public void run()
+    {
+        double drawInterval = 1000000000/FPS;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
         
         while(gameThread != null)
         {
-            double drawInterval = 1000000000/FPS; //0.01666
-            double nextDrawTime = System.nanoTime() + drawInterval;
+            currentTime = System.nanoTime();
             
-            //Se usara para actualizar la posicion de los personajes en el juego
-            Update();
-            //Y para "dibujar" en la pantalla la informacion actualizada
-            repaint();
+            delta += (currentTime - lastTime) / drawInterval;
             
-            try {
-                
-                double remainingTime = nextDrawTime - System.nanoTime();
-                remainingTime = remainingTime/1000000;
-                
-                if(remainingTime < 0)
-                {
-                    remainingTime = 0;
-                }
-                
-                Thread.sleep((long)remainingTime);
-                
-                nextDrawTime += drawInterval;
-                
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Tutorial.class.getName()).log(Level.SEVERE, null, ex);
+            lastTime = currentTime;
+            
+            if(delta >= 1)
+            {
+                Update();
+                repaint();
+                delta--;
             }
         }
-        
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+//   public void run() {
+//        
+//        while(gameThread != null)
+//        {
+//            double drawInterval = 1000000000/FPS; //0.01666
+//            double nextDrawTime = System.nanoTime() + drawInterval;
+//            
+//            //Se usara para actualizar la posicion de los personajes en el juego
+//            Update();
+//            //Y para "dibujar" en la pantalla la informacion actualizada
+//            repaint();
+//            
+//            try {
+//                
+//                double remainingTime = nextDrawTime - System.nanoTime();
+//                remainingTime = remainingTime/1000000;
+//                
+//                if(remainingTime < 0)
+//                {
+//                    remainingTime = 0;
+//                }
+//                
+//                Thread.sleep((long)remainingTime);
+//                
+//                nextDrawTime += drawInterval;
+//                
+//            } catch (InterruptedException ex) {
+//                Logger.getLogger(Tutorial.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+
+    int count = 0;
+    int count2 = 0;
+    public void jump(int who) {
+    if (!isJumpingCabra || !isJumpingArana) {
+        isJumpingCabra = true;
+        isJumpingCabra = true;
+        Thread jumpThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+           if(who == 1)
+            {
+                count = 1;
+                int targetY = 340; // Posición final del salto
+                while (playerCabraY > targetY) {
+                    playerCabraY -= 8; // Incremento de 10 en cada iteración
+                    repaint();
+                    try {
+                        Thread.sleep(10); // Pausa de 0.01 segundos
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                repaint();
+                while (playerCabraY < 470) {
+                    playerCabraY += 8; // Incremento de 10 en cada iteración
+                    repaint();
+                    try {
+                        Thread.sleep(10); // Pausa de 0.01 segundos
+                    } catch (InterruptedException e) {
+                            e.printStackTrace();
+                    }
+                }          
+                isJumpingCabra = false;
+                count = 0;
+            }
+                else
+                {
+                     count2 = 1;
+                int targetY = 340; // Posición final del salto
+                while (playerAranaY > targetY) {
+                    playerAranaY -= 8; // Incremento de 10 en cada iteración
+                    repaint();
+                    try {
+                        Thread.sleep(10); // Pausa de 0.01 segundos
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                repaint();
+                while (playerAranaY < 500) {
+                    playerAranaY += 8; // Incremento de 10 en cada iteración
+                    repaint();
+                    try {
+                        Thread.sleep(10); // Pausa de 0.01 segundos
+                    } catch (InterruptedException e) {
+                            e.printStackTrace();
+                    }
+                }          
+                isJumpingArana = false;
+                count2 = 0;
+                }
+            }
+        });
+
+        jumpThread.start();
+    }
+}
+
+
     public void Update()
     {
         //Controles de CABRA
         if(KeyH.upPressed == true)
         {
-            playerCabraY = playerCabraY - 5;
+            if(count == 0){
+            jump(1);} else{}
         }
-        else if (KeyH.rightPressed)
+        if (KeyH.rightPressed)
         {
             playerCabraX += Player2Speed;
         }
-        else if (KeyH.leftPressed)
+        if (KeyH.leftPressed)
         {
             playerCabraX -= Player2Speed;
         }
@@ -156,13 +254,14 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
         //Controles de ARANA
           if(KeyH.upPressedW == true)
         {
-            playerAranaY = playerAranaY - 5;
+            if(count2 == 0){
+            jump(2);} else{}
         }
-        else if (KeyH.rightPressedD)
+        if (KeyH.rightPressedD)
         {
             playerAranaX += Player2Speed;
         }
-        else if (KeyH.leftPressedA)
+        if (KeyH.leftPressedA)
         {
             playerAranaX -= Player2Speed;
         }
@@ -185,4 +284,6 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
         g2.dispose();
         g4.dispose();
     }
+
+  
 }

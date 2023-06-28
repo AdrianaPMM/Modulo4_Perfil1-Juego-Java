@@ -15,7 +15,8 @@ public class KeyHandler implements KeyListener{
 
     public boolean upPressed, rightPressed, leftPressed, upPressedW, rightPressedD, leftPressedA;
     @Override
-    public void keyTyped(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {
+    }
     
 
     @Override
