@@ -13,10 +13,16 @@ public class Player extends Entity{
     Tutorial tt;
     KeyHandler keyH;
     
+    public final int screenX;
+    public final int screenX2;
+    
     public Player(Tutorial tt, KeyHandler keyH)
     {
         this.tt = tt;
         this.keyH = keyH;
+        
+        screenX = (1296/2) - 100;
+        screenX2 = ((1296/2) - 100) - 100;
         
         setDefaultValues();
         getPlayersImage();
@@ -33,8 +39,11 @@ public class Player extends Entity{
     
     public void setDefaultValues()
     {
-        playerCabraX = 100;
-        playerAranaX = 250;
+        worldX1 = 250;
+        worldX2 = 100;
+        
+        playerCabraX = 250;
+        playerAranaX = 100;
         
         playerCabraY = 410;
         playerAranaY = 433;
@@ -99,12 +108,12 @@ public class Player extends Entity{
             if (keyH.rightPressed)
             {
                 directionCabra = "derecha";
-                playerCabraX += speed;
+                worldX1 += speed;
             }
             if (keyH.leftPressed)
             {
                 directionCabra = "izquierda";
-                playerCabraX -= speed;
+                worldX1 -= speed;
             }
             spriteCabraCount++;
             if(spriteCabraCount>7)
@@ -131,12 +140,12 @@ public class Player extends Entity{
             if (keyH.rightPressedD)
             {
                 directionArana = "derecha";
-                playerAranaX += speed;
+                worldX2 += speed;
             }
             if (keyH.leftPressedA)
             {
                 directionArana = "izquierda";
-                playerAranaX -= speed;
+                worldX2 -= speed;
             }
             spriteAranaCount++;
 
@@ -195,10 +204,10 @@ public class Player extends Entity{
     public void Draw(Graphics2D g2, Graphics2D g4)
     {
         directionKabra();
-        g2.drawImage(imageCabra, playerCabraX, playerCabraY, 150, 130, null);
+        g2.drawImage(imageCabra, screenX, playerCabraY, 150, 130, null);
         
         directionAragna();
-        g4.drawImage(imageArana, playerAranaX, playerAranaY, 200, 140, null);
+        g4.drawImage(imageArana, screenX2, playerAranaY, 200, 140, null);
     }
     
     

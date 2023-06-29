@@ -97,22 +97,43 @@ public class TileManager {
 //        } catch(Exception e){}
 //    }
     
+//    
+//    public void DrawMap(Graphics2D g2,int col, int row, int x2, int y, int tileNum, int width, int height, int firstx)
+//    {
+//       int x = firstx;
+//         while(col < maxScreenCol)
+//        {
+//            g2.drawImage(tile[tileNum].image, x, y, width, height, null);
+//            col++;
+//
+//            x += x2; //Posicion x del objetoen cada dibujo
+//            
+//            if(col == 0)
+//            {
+//               col = 0;
+//                x = 0;
+//               
+//            }
+//        }
+//    }
     
-    public void DrawMap(Graphics2D g2,int col, int row, int x2, int y, int tileNum, int width, int height, int firstx)
+        
+    public void DrawMap(Graphics2D g2,int worldCol, int row, int x2, int y, int tileNum, int width, int height, int diference)
     {
-       int x = firstx;
-         while(col < maxScreenRow)
+        int diference1 = diference;
+         while(worldCol < tt.maxWorldCol)
         {
-            g2.drawImage(tile[tileNum].image, x, y, width, height, null);
-            col++;
-
-            x += x2; //Posicion x del objetoen cada dibujo
+            int worldX = worldCol * 48;
+            int screenX = worldX - tt.player.worldX1 + tt.player.screenX;
             
-            if(col == maxScreenCol)
+            g2.drawImage(tile[tileNum].image, screenX + diference1, y, width, height, null);
+            worldCol++;
+            diference1 += diference * -1; 
+            
+            if(worldCol == 0)
             {
-               col = 0;
-                x = 0;
-               
+               worldCol = 0;
+               row++;
             }
         }
     }
@@ -121,24 +142,24 @@ public class TileManager {
     {
 
         //Dibujar mountain en x, col
-          //g2, col, row, x, y, tileNum, width, height, firstx
-        DrawMap(g2, 0, 0, 1296, 220, 2, 560, 322, 30);
+          //g2, col, row, x, y, tileNum, width, height, diference
+        DrawMap(g2, 2, 0, 1296, 220, 2, 560, 322, -1000);
         
         //Dibujar nubes en x, col
-         //g2, col, row, x, y, tileNum, width, height, firstx
-        DrawMap(g2, 0, 0, 0, 0, 1, 1296, 360, 0);  
+         //g2, col, row, x, y, tileNum, width, height, diference
+        DrawMap(g2, 0, 0, 1296, 0, 1, 1296, 270, -1296);  
         
         //Dibujar tree delante de back0 en x, col
-          //g2, col, row, x, y, tileNum, width, height, firstx
-        DrawMap(g2, 10, 0, 20, 20, 5, 512, 512, 750);
+          //g2, col, row, x, y, tileNum, width, height, diference
+        DrawMap(g2, 0, 0, 200, 20, 5, 512, 512, -500);
         
          //Dibujar cesped en x, col
-         //g2, col, row, x, y, tileNum, width, height, firstx
-        DrawMap(g2, 0, 0, 230, 480, 3, 256, 80, -10);     
+         //g2, col, row, x, y, tileNum, width, height, diference
+        DrawMap(g2, 0, 0, 230, 480, 3, 256, 80, -40);     
    
         //Dibujar tierra en x, col
-          //g2, col, row, x, y, tileNum, width, height, firstx
-        DrawMap(g2, 0, 0, 1226, 560, 4, 1296, 26, 0);  
+          //g2, col, row, x, y, tileNum, width, height, diference
+        DrawMap(g2, 0, 0, 1296, 560, 4, 1296, 26, -120);  
         
         
         
