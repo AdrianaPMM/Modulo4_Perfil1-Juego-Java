@@ -33,8 +33,8 @@ public class Player extends Entity{
         playerCabraX = 100;
         playerAranaX = 250;
         
-        playerCabraY = 470;
-        playerAranaY = 500;
+        playerCabraY = 430;
+        playerAranaY = 480;
         
         speed = 5;
         directionCabra = "derecha";
@@ -210,7 +210,7 @@ public class Player extends Entity{
            if(who == 1)
             {
                 count = 1;
-                int targetY = 340; // Posición final del salto
+                int targetY = 300; // Posición final del salto
                 while (playerCabraY > targetY) {
                     playerCabraY -= 8; // Incremento de 10 en cada iteración
                     directionKabra();
@@ -222,7 +222,7 @@ public class Player extends Entity{
                     }
                 }
                 tt.repaint();
-                while (playerCabraY < 470) {
+                while (playerCabraY < 430) {
                     playerCabraY += 8; // Incremento de 10 en cada iteración
                     directionKabra();
                     tt.repaint();
@@ -238,7 +238,7 @@ public class Player extends Entity{
                 else
                 {
                      count2 = 1;
-                int targetY = 340; // Posición final del salto
+                int targetY = 300; // Posición final del salto
                 while (playerAranaY > targetY) {
                     playerAranaY -= 8; // Incremento de 10 en cada iteración
                      directionAragna();
@@ -250,7 +250,7 @@ public class Player extends Entity{
                     }
                 }
                 tt.repaint();
-                while (playerAranaY < 500) {
+                while (playerAranaY < 480) {
                     playerAranaY += 8; // Incremento de 10 en cada iteración
                      directionAragna();
                     tt.repaint();

@@ -44,5 +44,8 @@ public class TileManager {
     public void Draw(Graphics2D g2)
     {
         g2.drawImage(tile[0].image, 0,0, 1300, 375, null);
+        g2.drawImage(tile[1].image, 0,300, 560, 322, null);
+        g2.drawImage(tile[2].image, 0,540, 256, 85, null);
+        g2.drawImage(tile[3].image, 0,625, 1300, 25, null);
     }
 }
