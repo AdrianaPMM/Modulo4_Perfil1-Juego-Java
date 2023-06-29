@@ -19,7 +19,9 @@ public class Comic extends javax.swing.JPanel {
      */
     Fuentes tipoFuentes;
     public Comic() {
+
         initComponents();
+       EstadoLabel();
         fontDesign();
     }
     
@@ -28,7 +30,7 @@ public class Comic extends javax.swing.JPanel {
     {      
         tipoFuentes = new Fuentes();
        // jLabel1.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 35));
-        jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
+        img1.setHorizontalAlignment(SwingConstants.CENTER);
 
        
         btnSiguiente.setText("<html><font color='white'> Siguiente </font></html>");
@@ -55,17 +57,16 @@ public class Comic extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         btnSiguiente = new javax.swing.JButton();
+        img5 = new javax.swing.JLabel();
+        img4 = new javax.swing.JLabel();
+        img3 = new javax.swing.JLabel();
+        img2 = new javax.swing.JLabel();
+        img1 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1296, 624));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("COMIC");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, -1));
 
         btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRBtn2.png"))); // NOI18N
         btnSiguiente.setBorderPainted(false);
@@ -75,23 +76,47 @@ public class Comic extends javax.swing.JPanel {
                 btnSiguienteMouseClicked(evt);
             }
         });
-        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 240, 90));
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 10, 250, 90));
+
+        img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgcomic/newpackage/5 1.png"))); // NOI18N
+        jPanel1.add(img5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, -1, -1));
+
+        img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgcomic/newpackage/4 1.png"))); // NOI18N
+        jPanel1.add(img4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 860, 280));
+
+        img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgcomic/newpackage/3 (1) 1.png"))); // NOI18N
+        jPanel1.add(img3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-420, 300, 1070, 360));
+
+        img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgcomic/newpackage/2 (1) 1.png"))); // NOI18N
+        jPanel1.add(img2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 1070, 370));
+
+        img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgcomic/newpackage/2 9.png"))); // NOI18N
+        jPanel1.add(img1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 970, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSiguienteMouseClicked
+
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSiguienteActionPerformed
 
     
     public JButton getBtnSiguiente()
@@ -101,7 +126,64 @@ public class Comic extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSiguiente;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel img1;
+    private javax.swing.JLabel img2;
+    private javax.swing.JLabel img3;
+    private javax.swing.JLabel img4;
+    private javax.swing.JLabel img5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+
+
+public void EstadoLabel()
+{
+    img1.setVisible(false);
+    img2.setVisible(false);
+    img3.setVisible(false);
+    img4.setVisible(false);
+    img5.setVisible(false);
+    btnSiguiente.setVisible(false);
+   iniciarThread1();
+    
+}
+
+
+public void iniciarThread1()
+{
+   Thread jumpThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+              img1.setVisible(true);
+     try {
+            Thread.sleep(2000); // Pausa de 0.01 segundos
+       } catch (InterruptedException e) {
+                e.printStackTrace();
+       }  
+      img2.setVisible(true);
+        try {
+            Thread.sleep(2000); // Pausa de 0.01 segundos
+       } catch (InterruptedException e) {
+                e.printStackTrace();
+       }  
+     img3.setVisible(true);
+     
+        try {
+            Thread.sleep(2000); // Pausa de 0.01 segundos
+       } catch (InterruptedException e) {
+                e.printStackTrace();
+       }  
+     img4.setVisible(true);
+     
+     try {
+            Thread.sleep(2000); // Pausa de 0.01 segundos
+       } catch (InterruptedException e) {
+                e.printStackTrace();
+       }  
+     img5.setVisible(true);
+       btnSiguiente.setVisible(true);
+       
+ }});
+jumpThread.start();
+}
 }
