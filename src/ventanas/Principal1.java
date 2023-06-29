@@ -77,10 +77,7 @@ public class Principal1 extends javax.swing.JFrame {
             //Si la respuesta es no (NO_OPTION)
             if(resp == JOptionPane.NO_OPTION)
             {}//El valor de box2 sera 0
-
     }   
-
-        
 
     
     public void LeerProgreso()
