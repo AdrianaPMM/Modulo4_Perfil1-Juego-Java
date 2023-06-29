@@ -55,7 +55,8 @@ public class Principal1 extends javax.swing.JFrame {
         
         pnlPrincipal.add(nvl1, "nvl1");
         pnlPrincipal.add(nvl2, "nvl2");
-        pnlPrincipal.add(nvl3, "nvl3");
+        pnlPrincipal.add(nvl3, "nvl3"
+        );
         pnlPrincipal.add(nvl4, "nvl4");
         pnlPrincipal.add(nvl5, "nvl5");
         pnlPrincipal.add(nvl6, "nvl6");
@@ -72,6 +73,8 @@ public class Principal1 extends javax.swing.JFrame {
             if(resp == JOptionPane.YES_OPTION)
                {
                  cardLayout.show(pnlPrincipal, "mapaNiveles");
+                 this.requestFocusInWindow();
+                 
                
                }//El valor de box2 sera 1
             //Si la respuesta es no (NO_OPTION)

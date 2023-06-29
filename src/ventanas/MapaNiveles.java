@@ -20,6 +20,7 @@ public class MapaNiveles extends javax.swing.JPanel {
     Fuentes tipoFuentes;
     public MapaNiveles() {
         initComponents();
+        this.requestFocusInWindow();
         fontDesign();
     }
 
@@ -98,6 +99,7 @@ public class MapaNiveles extends javax.swing.JPanel {
         btnNvl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRbtn1Rounded.png"))); // NOI18N
         btnNvl2.setBorderPainted(false);
         btnNvl2.setContentAreaFilled(false);
+        btnNvl2.setFocusTraversalPolicyProvider(true);
         btnNvl2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnNvl2MouseClicked(evt);
