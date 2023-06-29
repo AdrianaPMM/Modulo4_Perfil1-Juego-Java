@@ -28,13 +28,16 @@ public class Player extends Entity{
     int playerCabraY;
     int playerAranaY;
     
+    int playerCabraYORIGINAL = 410;
+    int playerAranaYORIGINL = 433;
+    
     public void setDefaultValues()
     {
         playerCabraX = 100;
         playerAranaX = 250;
         
-        playerCabraY = 430;
-        playerAranaY = 480;
+        playerCabraY = 410;
+        playerAranaY = 433;
         
         speed = 5;
         directionCabra = "derecha";
@@ -192,10 +195,10 @@ public class Player extends Entity{
     public void Draw(Graphics2D g2, Graphics2D g4)
     {
         directionKabra();
-        g2.drawImage(imageCabra, playerCabraX, playerCabraY, tt.tileSizeW1, tt.tileSize1, null);
+        g2.drawImage(imageCabra, playerCabraX, playerCabraY, 150, 130, null);
         
         directionAragna();
-        g4.drawImage(imageArana, playerAranaX, playerAranaY, tt.tileSizeW2, tt.tileSize2, null);
+        g4.drawImage(imageArana, playerAranaX, playerAranaY, 200, 140, null);
     }
     
     
@@ -222,7 +225,7 @@ public class Player extends Entity{
                     }
                 }
                 tt.repaint();
-                while (playerCabraY < 430) {
+                while (playerCabraY < playerCabraYORIGINAL) {
                     playerCabraY += 8; // Incremento de 10 en cada iteración
                     directionKabra();
                     tt.repaint();
@@ -238,7 +241,7 @@ public class Player extends Entity{
                 else
                 {
                      count2 = 1;
-                int targetY = 300; // Posición final del salto
+                int targetY = 250; // Posición final del salto
                 while (playerAranaY > targetY) {
                     playerAranaY -= 8; // Incremento de 10 en cada iteración
                      directionAragna();
@@ -250,7 +253,7 @@ public class Player extends Entity{
                     }
                 }
                 tt.repaint();
-                while (playerAranaY < 480) {
+                while (playerAranaY < playerAranaYORIGINL) {
                     playerAranaY += 8; // Incremento de 10 en cada iteración
                      directionAragna();
                     tt.repaint();

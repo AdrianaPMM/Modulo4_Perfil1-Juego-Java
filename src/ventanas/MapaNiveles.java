@@ -83,7 +83,7 @@ public class MapaNiveles extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MAPA DE NIVELES");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, -1, -1));
 
         btnNvl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRbtn1Rounded.png"))); // NOI18N
         btnNvl1.setBorderPainted(false);
@@ -93,7 +93,7 @@ public class MapaNiveles extends javax.swing.JPanel {
                 btnNvl1MouseClicked(evt);
             }
         });
-        jPanel1.add(btnNvl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 130, 130));
+        jPanel1.add(btnNvl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 130, 130));
 
         btnNvl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRbtn1Rounded.png"))); // NOI18N
         btnNvl2.setBorderPainted(false);
@@ -103,7 +103,7 @@ public class MapaNiveles extends javax.swing.JPanel {
                 btnNvl2MouseClicked(evt);
             }
         });
-        jPanel1.add(btnNvl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, 130, 130));
+        jPanel1.add(btnNvl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 130, 130));
 
         btnNvl3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRbtn1Rounded.png"))); // NOI18N
         btnNvl3.setBorderPainted(false);
@@ -113,7 +113,7 @@ public class MapaNiveles extends javax.swing.JPanel {
                 btnNvl3MouseClicked(evt);
             }
         });
-        jPanel1.add(btnNvl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 130, 130));
+        jPanel1.add(btnNvl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, 130, 130));
 
         btnNvl4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRbtn1Rounded.png"))); // NOI18N
         btnNvl4.setBorderPainted(false);
@@ -123,7 +123,7 @@ public class MapaNiveles extends javax.swing.JPanel {
                 btnNvl4MouseClicked(evt);
             }
         });
-        jPanel1.add(btnNvl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 130, 130));
+        jPanel1.add(btnNvl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 130, 130));
 
         btnNvl5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRbtn1Rounded.png"))); // NOI18N
         btnNvl5.setBorderPainted(false);
@@ -133,7 +133,7 @@ public class MapaNiveles extends javax.swing.JPanel {
                 btnNvl5MouseClicked(evt);
             }
         });
-        jPanel1.add(btnNvl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 130, 130));
+        jPanel1.add(btnNvl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, 130, 130));
 
         btnNvl6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRbtn1Rounded.png"))); // NOI18N
         btnNvl6.setBorderPainted(false);
@@ -143,17 +143,17 @@ public class MapaNiveles extends javax.swing.JPanel {
                 btnNvl6MouseClicked(evt);
             }
         });
-        jPanel1.add(btnNvl6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 380, 130, 130));
+        jPanel1.add(btnNvl6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, 130, 130));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1296, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -211,9 +211,6 @@ public class MapaNiveles extends javax.swing.JPanel {
         return btnNvl6;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnComenzar;
-    private javax.swing.JButton btnComenzar1;
-    private javax.swing.JButton btnComenzar2;
     private javax.swing.JButton btnNvl1;
     private javax.swing.JButton btnNvl2;
     private javax.swing.JButton btnNvl3;

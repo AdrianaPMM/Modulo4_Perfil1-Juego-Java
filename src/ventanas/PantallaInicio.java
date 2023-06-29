@@ -103,7 +103,7 @@ public class PantallaInicio extends javax.swing.JFrame {
         jPanel2.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1300, 220));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/BG1.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, 630));
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 

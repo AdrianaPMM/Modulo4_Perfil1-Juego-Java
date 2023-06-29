@@ -36,11 +36,11 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
     //final int originalTileSize = 50;
     //final int scale = 2;
         
-    public final int tileSize1 = 200;
-    public final int tileSizeW1 = 160;
-    
-    public final int tileSize2 = 200;
-    public final int tileSizeW2 = 130;
+//    public final int tileSize1 = 200;
+//    public final int tileSizeW1 = 160;
+//    
+//    public final int tileSize2 = 200;
+//    public final int tileSizeW2 = 130;
      
     private KeyHandler keyH;
         
