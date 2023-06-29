@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 public class Principal1 extends javax.swing.JFrame {
 
@@ -63,6 +64,25 @@ public class Principal1 extends javax.swing.JFrame {
 
     }
     
+         public void PRUEBAMAPA()
+    {
+        int resp = JOptionPane.showConfirmDialog(null, "¿Quieres saltarte el tutorial?",//<- EL MENSAJE
+        "Alerta!"/*<- El título de la ventana*/, JOptionPane.YES_NO_OPTION/*Las opciones (si o no)*/, JOptionPane.WARNING_MESSAGE/*El tipo de ventana, en este caso WARNING*/);
+            //Si la respuesta es sí(YES_OPTION)   
+            if(resp == JOptionPane.YES_OPTION)
+               {
+                 cardLayout.show(pnlPrincipal, "mapaNiveles");
+               
+               }//El valor de box2 sera 1
+            //Si la respuesta es no (NO_OPTION)
+            if(resp == JOptionPane.NO_OPTION)
+            {}//El valor de box2 sera 0
+
+    }   
+
+        
+
+    
     public void LeerProgreso()
     {
 ////         try{
@@ -113,6 +133,7 @@ public class Principal1 extends javax.swing.JFrame {
 
     public void getBtndeTutorial()
     {
+        PRUEBAMAPA();
          //JButton btnSiguiente2 = tutorial.getBtnSiguiente();
           //Mostramos mapa de niveles (cuando se le de clic al btn de Siguiente 2)
           /*btnSiguiente2.addActionListener(new ActionListener() {
