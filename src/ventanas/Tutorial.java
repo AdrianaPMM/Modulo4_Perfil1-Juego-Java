@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
+import tile.TileManager;
 
 /**
  *
@@ -24,7 +25,7 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
 
     //FPS
     int FPS = 60;
-    
+    TileManager tileM = new TileManager(this);
     KeyHandler KeyH = new KeyHandler();
     
     Fuentes tipoFuentes;
@@ -41,10 +42,6 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
     public final int tileSize2 = 200;
     public final int tileSizeW2 = 130;
      
-    //Posision por defecto de los jugadores
-    public int playerCabraY = 470;     
-    public int playerAranaY = 500;
-    
     private KeyHandler keyH;
         
     public Tutorial() { 
@@ -66,7 +63,7 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(51, 51, 51));
+        setBackground(new java.awt.Color(147, 216, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
     }// </editor-fold>//GEN-END:initComponents
 
@@ -111,7 +108,7 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D)g;
         //Arana
         Graphics2D g4 = (Graphics2D)g;
-        
+        tileM.Draw(g2);
         player.Draw(g2, g4);
 
         g2.dispose();
