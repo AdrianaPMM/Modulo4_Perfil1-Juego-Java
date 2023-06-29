@@ -32,11 +32,11 @@ public class PantallaInicio extends javax.swing.JFrame {
     {      
         tipoFuentes = new Fuentes();
        // jLabel1.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 35));
-        lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-       lblTitulo.setFont(tipoFuentes.fuente(tipoFuentes.KoHoSemiBold, 0, 50));
+        //lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+       //lblTitulo.setFont(tipoFuentes.fuente(tipoFuentes.KoHoSemiBold, 0, 50));
        
-        btnComenzar.setText("<html><font color='white'> Comenzar </font></html>");
-        caracBtn(btnComenzar);
+        //btnComenzar.setText("<html><font color='white'> Comenzar </font></html>");
+        //caracBtn(btnComenzar);
     }
     
     private void caracBtn(JButton btn)
@@ -58,8 +58,6 @@ public class PantallaInicio extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         btnComenzar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        lblTitulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,6 +65,7 @@ public class PantallaInicio extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(java.awt.Color.black);
+        setPreferredSize(new java.awt.Dimension(1296, 624));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -77,10 +76,10 @@ public class PantallaInicio extends javax.swing.JFrame {
         });
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setPreferredSize(new java.awt.Dimension(1300, 650));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1296, 624));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnComenzar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRBtn2.png"))); // NOI18N
+        btnComenzar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/boton.png"))); // NOI18N
         btnComenzar.setBorderPainted(false);
         btnComenzar.setContentAreaFilled(false);
         btnComenzar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -88,22 +87,10 @@ public class PantallaInicio extends javax.swing.JFrame {
                 btnComenzarMouseClicked(evt);
             }
         });
-        jPanel2.add(btnComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, 240, -1));
+        jPanel2.add(btnComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 330, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/KoaRBG1.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 320, 170));
-
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("<html> <center>  Koa's Adventure:  <br> En Busca de la Familia <br> Caprina  </center> </html>");
-        lblTitulo.setToolTipText("");
-        lblTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setName(""); // NOI18N
-        jPanel2.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1300, 220));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/BG1.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, 630));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/portada1.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, -1));
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -177,8 +164,6 @@ public class PantallaInicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnComenzar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }

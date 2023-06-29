@@ -35,9 +35,8 @@ public class TileManager {
         try
         {
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/rceleste.png"));
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/rBack0.png"));
  
-            
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/nubes1.png"));
            
@@ -49,6 +48,13 @@ public class TileManager {
             
             tile[4] = new Tile();
             tile[4].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/dirth1.png"));
+            
+            tile[5] = new Tile();
+            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/tree.png"));
+
+            
+             tile[6] = new Tile();
+            tile[6].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/tre80.png"));
 
         }
         catch (IOException e)
@@ -104,22 +110,27 @@ public class TileManager {
             
             if(col == maxScreenCol)
             {
-               col=0;
-                x=0;
-                row++;
+               col = 0;
+                x = 0;
+               
             }
         }
     }
     
     public void Draw(Graphics2D g2)
     {
+
         //Dibujar mountain en x, col
           //g2, col, row, x, y, tileNum, width, height, firstx
         DrawMap(g2, 0, 0, 1296, 220, 2, 560, 322, 30);
         
         //Dibujar nubes en x, col
          //g2, col, row, x, y, tileNum, width, height, firstx
-        DrawMap(g2, 0, 0, 0, 0, 1, 1296, 360, 0);       
+        DrawMap(g2, 0, 0, 0, 0, 1, 1296, 360, 0);  
+        
+        //Dibujar tree delante de back0 en x, col
+          //g2, col, row, x, y, tileNum, width, height, firstx
+        DrawMap(g2, 10, 0, 20, 20, 5, 512, 512, 750);
         
          //Dibujar cesped en x, col
          //g2, col, row, x, y, tileNum, width, height, firstx
