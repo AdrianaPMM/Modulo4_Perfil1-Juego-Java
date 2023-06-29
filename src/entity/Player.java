@@ -48,7 +48,7 @@ public class Player extends Entity{
         playerCabraY = 410;
         playerAranaY = 433;
         
-        speed = 5;
+        speed = 10;
         directionCabra = "derecha";
         directionArana = "derecha";
     }

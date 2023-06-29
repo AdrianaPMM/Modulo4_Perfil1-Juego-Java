@@ -151,7 +151,7 @@ public class TileManager {
         
         //Dibujar tree delante de back0 en x, col
           //g2, col, row, x, y, tileNum, width, height, diference
-        DrawMap(g2, 0, 0, 200, 20, 5, 512, 512, -500);
+        DrawMap(g2, 0, 0, 200, 20, 5, 512, 512, -1000);
         
          //Dibujar cesped en x, col
          //g2, col, row, x, y, tileNum, width, height, diference

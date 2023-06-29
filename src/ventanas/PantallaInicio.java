@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 import javax.sound.sampled.*;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  *
@@ -65,7 +66,6 @@ public class PantallaInicio extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(java.awt.Color.black);
-        setPreferredSize(new java.awt.Dimension(1296, 624));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -82,6 +82,7 @@ public class PantallaInicio extends javax.swing.JFrame {
         btnComenzar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/boton.png"))); // NOI18N
         btnComenzar.setBorderPainted(false);
         btnComenzar.setContentAreaFilled(false);
+        btnComenzar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnComenzar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnComenzarMouseClicked(evt);
@@ -98,17 +99,35 @@ public class PantallaInicio extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public Clip clip;
+    public String ruta="/Musica/";
+    
+    public void sonido(String archivo){
+        try{
+            clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(ruta+archivo+".wav")));
+            clip.start();
+        }
+        catch(IOException | LineUnavailableException | UnsupportedAudioFileException e){
+            
+        }
+    }
+    
     private void btnComenzarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComenzarMouseClicked
         Principal1 P1 = new Principal1();
         P1.setVisible(true);
         this.setVisible(false);
+        
+        sonido("SmashSound");
+
     }//GEN-LAST:event_btnComenzarMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
         
         //Ruta de musica
-        String filePath = "src/Musica/MusicaFondo.wav";
+        String filePath = "src/Musica/BlindingLight.wav";
         
         //Cargar musica
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filePath));

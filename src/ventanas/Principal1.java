@@ -121,6 +121,10 @@ public class Principal1 extends javax.swing.JFrame {
          btnSiguiente1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(pnlPrincipal, "tutorial");
+                
+                ventanas.PantallaInicio pInicio = new PantallaInicio();
+                pInicio.sonido("poyo");
+                
                 tutorial.startGameThread();
                 tutorial.requestFocusInWindow();
                  getBtndeTutorial();

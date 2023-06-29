@@ -64,10 +64,10 @@ public class Nivel2_Helado extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPersonaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/Jugador.png"))); // NOI18N
-        add(jPersonaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 120, 100));
+        add(jPersonaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 120, 100));
 
         jFondoHielo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos_img/FondoNivelJuego.png"))); // NOI18N
-        add(jFondoHielo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(jFondoHielo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 660));
     }// </editor-fold>//GEN-END:initComponents
 
 
