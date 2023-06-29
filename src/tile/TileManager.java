@@ -92,71 +92,47 @@ public class TileManager {
 //    }
     
     
+    public void DrawMap(Graphics2D g2,int col, int row, int x2, int y, int tileNum, int width, int height, int firstx)
+    {
+       int x = firstx;
+         while(col < maxScreenRow)
+        {
+            g2.drawImage(tile[tileNum].image, x, y, width, height, null);
+            col++;
+
+            x += x2; //Posicion x del objetoen cada dibujo
+            
+            if(col == maxScreenCol)
+            {
+               col=0;
+                x=0;
+                row++;
+            }
+        }
+    }
+    
     public void Draw(Graphics2D g2)
     {
-        int col1 = 0;    
-        int row1 = 0;
-        int x1 = 0;    
-        int y = 0;
-                    
+        //Dibujar mountain en x, col
+          //g2, col, row, x, y, tileNum, width, height, firstx
+        DrawMap(g2, 0, 0, 1296, 220, 2, 560, 322, 30);
+        
         //Dibujar nubes en x, col
-        while(col1 < maxScreenRow)
-        {
-            y = 0; //posicion y de la nube en cada dibujo
-            g2.drawImage(tile[1].image, x1, y, 1296, 360, null);
-            col1++;
-            
-            x1 += 1296; //Posicion x de la nube en cada dibujo
-            
-            if(col1 == maxScreenCol)
-            {
-                col1 = 0;
-                x1=0;
-                row1++;
-            }
-        }
+         //g2, col, row, x, y, tileNum, width, height, firstx
+        DrawMap(g2, 0, 0, 0, 0, 1, 1296, 360, 0);       
         
          //Dibujar cesped en x, col
-        int col2 = 0;    
-        int row2 = 0;
-        int x2 = -10;    
-
-        while(col2 < maxScreenRow)
-        {
-            y = 480; //posicion y del objeto en cada dibujo
-            g2.drawImage(tile[3].image, x2, y, 256, 80, null);
-            col2++;
-            
-            x2 += 230; //Posicion x del objeto en cada dibujo
-            
-            if(col2 == maxScreenCol)
-            {
-                col2 = 0;
-                x2=0;
-                row2++;
-            }
-        }
-        
+         //g2, col, row, x, y, tileNum, width, height, firstx
+        DrawMap(g2, 0, 0, 230, 480, 3, 256, 80, -10);     
+   
         //Dibujar tierra en x, col
-        int col3 = 0;    
-        int row3 = 0;
-        int x3 = 0;   
+          //g2, col, row, x, y, tileNum, width, height, firstx
+        DrawMap(g2, 0, 0, 1226, 560, 4, 1296, 26, 0);  
         
-        while(col3 < maxScreenRow)
-        {
-            y = 560; //posicion y del objeto en cada dibujo
-            g2.drawImage(tile[4].image, x3, y, 1296, 26, null);
-            col3++;
-            
-            x3 += 1296; //Posicion x del objeto en cada dibujo
-            
-            if(col3 == maxScreenCol)
-            {
-                col3 = 0;
-                x3=0;
-                row3++;
-            }
-        }
+        
+        
+        
+        
         
         
          //Dibujar nubes en x, col
