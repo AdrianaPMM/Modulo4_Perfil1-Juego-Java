@@ -74,7 +74,7 @@ public class Principal1 extends javax.swing.JFrame {
                {
                  cardLayout.show(pnlPrincipal, "mapaNiveles");
                  this.requestFocusInWindow();
-                 
+                 getBtnsdeMapaNiveles();
                
                }//El valor de box2 sera 1
             //Si la respuesta es no (NO_OPTION)

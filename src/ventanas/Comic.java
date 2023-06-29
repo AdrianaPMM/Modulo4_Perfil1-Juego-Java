@@ -156,27 +156,27 @@ public void iniciarThread1()
             public void run() {
               img1.setVisible(true);
      try {
-            Thread.sleep(2000); // Pausa de 0.01 segundos
+            Thread.sleep(2000); // Pausa de 2 segundos
        } catch (InterruptedException e) {
                 e.printStackTrace();
        }  
       img2.setVisible(true);
         try {
-            Thread.sleep(2000); // Pausa de 0.01 segundos
+            Thread.sleep(2000); // Pausa de 2 segundos
        } catch (InterruptedException e) {
                 e.printStackTrace();
        }  
      img3.setVisible(true);
      
         try {
-            Thread.sleep(2000); // Pausa de 0.01 segundos
+            Thread.sleep(2000); // Pausa de 2 segundos
        } catch (InterruptedException e) {
                 e.printStackTrace();
        }  
      img4.setVisible(true);
      
      try {
-            Thread.sleep(2000); // Pausa de 0.01 segundos
+            Thread.sleep(2000); // Pausa de 2 segundos
        } catch (InterruptedException e) {
                 e.printStackTrace();
        }  
