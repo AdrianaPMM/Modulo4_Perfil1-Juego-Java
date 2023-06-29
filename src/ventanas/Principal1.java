@@ -65,34 +65,34 @@ public class Principal1 extends javax.swing.JFrame {
     
     public void LeerProgreso()
     {
-         try{
-            
-            String query = "Select * From tbProgreso";    
-            PreparedStatement readCorreo = ConexionSQL.getConnection().prepareStatement(query);
-            
-            ResultSet rs = readCorreo.executeQuery();
-            
-            if (rs.next()) {
-                //System.out.println("Hay registros en la tabla");
-                //Si hay algo, es porque ha jugado minimo el tutorial,
-                //Por eso, va directamente al mapa, mostramos, mapa
-                cardLayout.show(pnlPrincipal, "mapaNiveles");
-
-            } else {
-                //System.out.println("No hay registros en la tabla");
-                //Si no hay nada, es que,no ha jugado nada
-                //por eso, iria al comic, y, desde el comic, al tutorial
-                //o sea, el tutorial solo aparece, si es que se vio el comic primero
-                //porque pues, primer udo velda
+////         try{
+////            
+////            String query = "Select * From tbProgreso";    
+////            PreparedStatement readCorreo = ConexionSQL.getConnection().prepareStatement(query);
+////            
+////            ResultSet rs = readCorreo.executeQuery();
+////            
+////            if (rs.next()) {
+////                //System.out.println("Hay registros en la tabla");
+////                //Si hay algo, es porque ha jugado minimo el tutorial,
+////                //Por eso, va directamente al mapa, mostramos, mapa
+////                cardLayout.show(pnlPrincipal, "mapaNiveles");
+//
+////            } else {
+//                //System.out.println("No hay registros en la tabla");
+//                //Si no hay nada, es que,no ha jugado nada
+//                //por eso, iria al comic, y, desde el comic, al tutorial
+//                //o sea, el tutorial solo aparece, si es que se vio el comic primero
+//                //porque pues, primer udo velda
                 cardLayout.show(pnlPrincipal, "comic");
                 getBtndeComic(); //Se consigue el btn que esta en el panel de Comic
-                //Y despues, del tutorial, al mapa de nieveles
-
-                
-            }  
-        }catch(Exception e){
-            System.out.println("ERROR en el query readCorreo: " + e.toString());
-        }
+//                //Y despues, del tutorial, al mapa de nieveles
+//
+//                
+//            }  
+//        }catch(Exception e){
+//            System.out.println("ERROR en el query: " + e.toString());
+//        }
     }
     
     public void getBtndeComic()
