@@ -54,6 +54,9 @@ public class TileManager {
 
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(getClass().getResourceAsStream("/res/players/enemigolvl1_DRC.png"));
+            
+            tile[4] = new Tile();
+            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/res/players/lose.png"));
         }
         catch (IOException e)
         {
@@ -136,18 +139,10 @@ public class TileManager {
 
             if(countVidas <= 0)
             {
-                int resp = JOptionPane.showConfirmDialog(null, "lose",//<- EL MENSAJE
-        "Alerta!"/*<- El título de la ventana*/, JOptionPane.YES_OPTION/*Las opciones (si o no)*/, JOptionPane.WARNING_MESSAGE/*El tipo de ventana, en este caso WARNING*/);
-            //Si la respuesta es sí(YES_OPTION)   
-            if(resp == JOptionPane.YES_OPTION)
-               {
-               }//El valor de box2 sera 1
-            //Si la respuesta es no (NO_OPTION)
-            if(resp == JOptionPane.NO_OPTION)
-            {}//El valor de box2 sera 0
-                //pp.PRUEBAMAPA("Te quedaste sin vidas, fallaste, intenta de nuevlo");
-                countVidas = 0;
                 
+                 g2.drawImage(tile[4].image, tt.player.worldX1 + positionX, 0, 1298, 634, null);
+                 tt.player.speed = 0;
+                 countVidas = 0;
             }
             else{}
               
