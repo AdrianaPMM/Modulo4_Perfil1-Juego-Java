@@ -37,9 +37,8 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
     Fuentes tipoFuentes;
     Thread gameThread;
     
-   public ColissionChecker cChecker = new ColissionChecker(this);
-    
    public Player player = new Player(this, KeyH);
+   public enemigo1 enemigo1;
      
     //final int originalTileSize = 50;
     //final int scale = 2;
@@ -119,6 +118,7 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
         tileM.Draw(g2);
         player.Draw(g2, g4);
 
+           
         g2.dispose();
         g4.dispose();
     }

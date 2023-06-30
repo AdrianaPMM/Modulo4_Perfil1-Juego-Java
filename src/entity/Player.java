@@ -17,6 +17,8 @@ public class Player extends Entity{
     public final int screenX;
     public final int screenX2;
     
+    
+    public Rectangle shipHitBox;
     public Player(Tutorial tt, KeyHandler keyH)
     {
         this.tt = tt;
@@ -25,7 +27,8 @@ public class Player extends Entity{
         screenX = (1296/2) - 100;
         screenX2 = ((1296/2) - 100) - 100;
         
-        solidArea = new Rectangle(0,0, 150, 130);
+       
+        
         
         setDefaultValues();
         getPlayersImage();
@@ -35,7 +38,7 @@ public class Player extends Entity{
     int playerAranaX;
     
     
-    int playerAranaY;
+    public int playerAranaY;
     
     int playerCabraYORIGINAL = 410;
     int playerAranaYORIGINL = 433;
@@ -45,7 +48,6 @@ public class Player extends Entity{
         worldX1 = 250;
         worldX2 = 100;
         
-        
         playerCabraX = 250;
         playerAranaX = 100;
         
@@ -53,6 +55,8 @@ public class Player extends Entity{
         playerAranaY = 433;
         
         speed = 5;
+
+        
         directionCabra = "derecha";
         directionArana = "derecha";
     }
@@ -120,9 +124,6 @@ public class Player extends Entity{
                 worldX1 -= speed;
             }
             spriteCabraCount++;
-            
-            colissionOn = false;
-            tt.cChecker.checkTile(this);
             
             if(spriteCabraCount>7)
             {

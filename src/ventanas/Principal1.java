@@ -63,10 +63,10 @@ public class Principal1 extends javax.swing.JFrame {
 
     }
     
-         public void PRUEBAMAPA()
+    public void PRUEBAMAPA()
     {
-        int resp = JOptionPane.showConfirmDialog(null, "¿Quieres saltarte el tutorial?",//<- EL MENSAJE
-        "Alerta!"/*<- El título de la ventana*/, JOptionPane.YES_NO_OPTION/*Las opciones (si o no)*/, JOptionPane.WARNING_MESSAGE/*El tipo de ventana, en este caso WARNING*/);
+        int resp = JOptionPane.showConfirmDialog(null, "Te quedaste sin vidas, fallaste, intenta de nuevlo",//<- EL MENSAJE
+        "Alerta!"/*<- El título de la ventana*/, JOptionPane.YES_OPTION/*Las opciones (si o no)*/, JOptionPane.WARNING_MESSAGE/*El tipo de ventana, en este caso WARNING*/);
             //Si la respuesta es sí(YES_OPTION)   
             if(resp == JOptionPane.YES_OPTION)
                {
