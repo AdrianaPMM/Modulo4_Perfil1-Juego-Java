@@ -19,7 +19,6 @@ public class Principal1 extends javax.swing.JFrame {
     MapaNiveles mapaNiveles = new MapaNiveles();
     Tutorial tutorial = new Tutorial();
     
-    Nivel1_Bosque nvl1 = new Nivel1_Bosque();
     Nivel2_Helado nvl2 = new Nivel2_Helado();
     Nivel3_Fuego nvl3 = new Nivel3_Fuego();
     Nivel4_Arena nvl4 = new Nivel4_Arena();
@@ -53,7 +52,6 @@ public class Principal1 extends javax.swing.JFrame {
         pnlPrincipal.add(tutorial, "tutorial");
         pnlPrincipal.add(mapaNiveles, "mapaNiveles");
         
-        pnlPrincipal.add(nvl1, "nvl1");
         pnlPrincipal.add(nvl2, "nvl2");
         pnlPrincipal.add(nvl3, "nvl3"
         );
@@ -123,14 +121,10 @@ public class Principal1 extends javax.swing.JFrame {
         //Muestre la pantalla del tutorial
          btnSiguiente1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(pnlPrincipal, "tutorial");
-                
-                ventanas.PantallaInicio pInicio = new PantallaInicio();
-                pInicio.sonido("poyo");
-                
-                tutorial.startGameThread();
-                tutorial.requestFocusInWindow();
-                 getBtndeTutorial();
+                cardLayout.show(pnlPrincipal, "mapaNiveles");
+                getBtnsdeMapaNiveles();
+              
+                // getBtndeTutorial();
             }
         });
     }
@@ -166,9 +160,12 @@ public class Principal1 extends javax.swing.JFrame {
         
          btnNvl1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(pnlPrincipal, "nvl1");
-                   //cuando se le de al btn Del nivel 1, muestre,
-                   //el panel del nivel 1, y asi sucesivamente
+                cardLayout.show(pnlPrincipal, "tutorial");
+                ventanas.PantallaInicio pInicio = new PantallaInicio();
+                pInicio.sonido("poyo");
+                
+                tutorial.startGameThread();
+                tutorial.requestFocusInWindow();
             }
         });
          

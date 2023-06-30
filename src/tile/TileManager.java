@@ -35,27 +35,14 @@ public class TileManager {
         try
         {
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/rBack0.png"));
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/tutorialtileComplete.png"));
  
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/nubes1.png"));
-           
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/tutorialtileComplete2.png"));
+              
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/mountain1.png"));
-            
-            tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/grass1.png"));
-            
-            tile[4] = new Tile();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/dirth1.png"));
-            
-            tile[5] = new Tile();
-            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/tree.png"));
-
-            
-             tile[6] = new Tile();
-            tile[6].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/tre80.png"));
-
+            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/res/players/tiles/rcolission1.png"));
+            tile[2].colision = true;
         }
         catch (IOException e)
         {
@@ -121,18 +108,19 @@ public class TileManager {
     public void DrawMap(Graphics2D g2,int worldCol, int row, int x2, int y, int tileNum, int width, int height, int diference)
     {
         int diference1 = diference;
-         while(worldCol < tt.maxWorldCol)
+        int worldCol1 = 0;
+         while(worldCol1 < tt.maxWorldCol)
         {
-            int worldX = worldCol * 48;
+            int worldX = worldCol1 * 48;
             int screenX = worldX - tt.player.worldX1 + tt.player.screenX;
             
             g2.drawImage(tile[tileNum].image, screenX + diference1, y, width, height, null);
-            worldCol++;
+            worldCol1++;
             diference1 += diference * -1; 
-            
-            if(worldCol == 0)
-            {
-               worldCol = 0;
+
+            if(worldCol1 == tt.maxWorldCol)
+            {System.out.println(worldCol1);
+               worldCol1 = 0;
                row++;
             }
         }
@@ -141,49 +129,50 @@ public class TileManager {
     public void Draw(Graphics2D g2)
     {
 
-        //Dibujar mountain en x, col
-          //g2, col, row, x, y, tileNum, width, height, diference
-        DrawMap(g2, 2, 0, 1296, 220, 2, 560, 322, -1000);
-        
-        //Dibujar nubes en x, col
-         //g2, col, row, x, y, tileNum, width, height, diference
-        DrawMap(g2, 0, 0, 1296, 0, 1, 1296, 270, -1296);  
-        
-        //Dibujar tree delante de back0 en x, col
-          //g2, col, row, x, y, tileNum, width, height, diference
-        DrawMap(g2, 0, 0, 200, 20, 5, 512, 512, -1000);
-        
-         //Dibujar cesped en x, col
-         //g2, col, row, x, y, tileNum, width, height, diference
-        DrawMap(g2, 0, 0, 230, 480, 3, 256, 80, -40);     
-   
-        //Dibujar tierra en x, col
-          //g2, col, row, x, y, tileNum, width, height, diference
-        DrawMap(g2, 0, 0, 1296, 560, 4, 1296, 26, -120);  
-        
-        
+//        //Dibujar mountain en x, col
+//          //g2, col, row, x, y, tileNum, width, height, diference
+//        DrawMap(g2, 2, 0, 1296, 220, 2, 560, 322, -1000);
+//        
+//        //Dibujar nubes en x, col
+//         //g2, col, row, x, y, tileNum, width, height, diference
+//        DrawMap(g2, 0, 0, 1296, 0, 1, 1296, 270, -1296);  
+//        
+//        //Dibujar tree delante de back0 en x, col
+//          //g2, col, row, x, y, tileNum, width, height, diference
+//        DrawMap(g2, 0, 0, 200, 20, 5, 512, 512, -1000);
+//        
+//         //Dibujar cesped en x, col
+//         //g2, col, row, x, y, tileNum, width, height, diference
+//        DrawMap(g2, 0, 0, 230, 480, 3, 256, 80, -40);     
+//   
+//        //Dibujar tierra en x, col
+//          //g2, col, row, x, y, tileNum, width, height, diference
+//        DrawMap(g2, 0, 0, 1296, 560, 4, 1296, 26, -120);  
         
         
         
         
         
-         //Dibujar nubes en x, col
-//        while(col < maxScreenRow)
-//        {
-//            int tileNum = mapTileNum[col][row];
-//            
-//            g2.drawImage(tile[tileNum].image, x, y, 48, 48, null);
-//            col++;
-//            
-//            x += 48; //Posicion x de la nube en cada dibujo
-//            
-//            if(col == maxScreenCol)
-//            {
-//                col = 0;
-//                x=0;
-//                row++;
-//                y += 48; //posicion y de la nube en cada dibujo
-//            }
-//        }
+        
+     int col = 0;
+     int worldCol1 = 0;
+     int x = 0;
+     int maxWorldCol = 50;
+     
+     g2.drawImage(tile[1].image, 0, -40, 550, 624, null);
+
+        while(col < maxWorldCol)
+        {
+          int tileNum = 0;
+            
+           int worldX = worldCol1 * 48;
+           int screenX = worldX - tt.player.worldX1 + tt.player.screenX;
+            g2.drawImage(tile[2].image, 100 + screenX, 0, 100, 624, null);
+            g2.drawImage(tile[tileNum].image, screenX + x, -40, 1296, 624, null);
+            System.out.println(col);
+            
+            x += 1296; //Posicion x de la nube en cada dibujo
+            col++;
+        }
     }
 }

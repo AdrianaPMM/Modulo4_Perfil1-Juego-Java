@@ -2,6 +2,7 @@ package entity;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -24,6 +25,8 @@ public class Player extends Entity{
         screenX = (1296/2) - 100;
         screenX2 = ((1296/2) - 100) - 100;
         
+        solidArea = new Rectangle(0,0, 150, 130);
+        
         setDefaultValues();
         getPlayersImage();
     }
@@ -31,7 +34,7 @@ public class Player extends Entity{
     int playerCabraX;
     int playerAranaX;
     
-    int playerCabraY;
+    
     int playerAranaY;
     
     int playerCabraYORIGINAL = 410;
@@ -41,6 +44,7 @@ public class Player extends Entity{
     {
         worldX1 = 250;
         worldX2 = 100;
+        
         
         playerCabraX = 250;
         playerAranaX = 100;
@@ -116,6 +120,10 @@ public class Player extends Entity{
                 worldX1 -= speed;
             }
             spriteCabraCount++;
+            
+            colissionOn = false;
+            tt.cChecker.checkTile(this);
+            
             if(spriteCabraCount>7)
             {
                 if(spriteCabraNum == 1){spriteCabraNum = 2;}
@@ -125,6 +133,10 @@ public class Player extends Entity{
                 spriteCabraCount = 0;
             } else{}
         } else {spriteCabraNum = 1;}
+        
+        
+        
+        
         
         if(keyH.upPressedW == true
            || keyH.rightPressedD == true
@@ -206,8 +218,8 @@ public class Player extends Entity{
         directionKabra();
         g2.drawImage(imageCabra, screenX, playerCabraY, 150, 130, null);
         
-        directionAragna();
-        g4.drawImage(imageArana, screenX2, playerAranaY, 200, 140, null);
+//        directionAragna();
+//        g4.drawImage(imageArana, screenX2, playerAranaY, 200, 140, null);
     }
     
     
@@ -222,7 +234,7 @@ public class Player extends Entity{
            if(who == 1)
             {
                 count = 1;
-                int targetY = 300; // Posición final del salto
+                int targetY = 250; // Posición final del salto
                 while (playerCabraY > targetY) {
                     playerCabraY -= 8; // Incremento de 10 en cada iteración
                     directionKabra();

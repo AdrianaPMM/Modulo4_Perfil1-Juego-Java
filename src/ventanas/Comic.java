@@ -81,32 +81,32 @@ public class Comic extends javax.swing.JPanel {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 10, 250, 90));
+        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 500, 250, 90));
 
         img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgcomic/newpackage/5 1.png"))); // NOI18N
-        jPanel1.add(img5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, -1, -1));
+        jPanel1.add(img5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, 1060, -1));
 
         img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgcomic/newpackage/4 1.png"))); // NOI18N
-        jPanel1.add(img4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 860, 280));
+        jPanel1.add(img4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 900, 280));
 
         img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgcomic/newpackage/3 (1) 1.png"))); // NOI18N
-        jPanel1.add(img3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-420, 300, 1070, 360));
+        jPanel1.add(img3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-410, 280, 1070, 360));
 
         img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgcomic/newpackage/2 (1) 1.png"))); // NOI18N
-        jPanel1.add(img2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 1070, 370));
+        jPanel1.add(img2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, -20, 1070, 370));
 
         img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgcomic/newpackage/2 9.png"))); // NOI18N
-        jPanel1.add(img1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 970, 480));
+        jPanel1.add(img1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 620));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1630, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -154,29 +154,34 @@ public void iniciarThread1()
    Thread jumpThread = new Thread(new Runnable() {
             @Override
             public void run() {
+                 try {
+            Thread.sleep(2500); // Pausa de 1.5 segundos
+       } catch (InterruptedException e) {
+                e.printStackTrace();
+       }  
               img1.setVisible(true);
      try {
-            Thread.sleep(2000); // Pausa de 2 segundos
+            Thread.sleep(1500); // Pausa de 1.5 segundos
        } catch (InterruptedException e) {
                 e.printStackTrace();
        }  
       img2.setVisible(true);
         try {
-            Thread.sleep(2000); // Pausa de 2 segundos
+            Thread.sleep(1500); // Pausa de 1.5 segundos
        } catch (InterruptedException e) {
                 e.printStackTrace();
        }  
      img3.setVisible(true);
      
         try {
-            Thread.sleep(2000); // Pausa de 2 segundos
+            Thread.sleep(1500); // Pausa de 1.5 segundos
        } catch (InterruptedException e) {
                 e.printStackTrace();
        }  
      img4.setVisible(true);
      
      try {
-            Thread.sleep(2000); // Pausa de 2 segundos
+            Thread.sleep(1500); // Pausa de 1.5 segundos
        } catch (InterruptedException e) {
                 e.printStackTrace();
        }  

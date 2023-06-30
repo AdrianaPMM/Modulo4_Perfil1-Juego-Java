@@ -24,7 +24,7 @@ import tile.TileManager;
 public class Tutorial extends javax.swing.JPanel implements Runnable {
 
     //Ajustes de tutorialMundo
-    public final int maxWorldCol = 135;
+    public final int maxWorldCol = 50;
     public final int maxWorldRow = 13;
     public final int worldWidth = 48 * maxWorldCol;
     public final int worldHeight = 48 * maxWorldRow;
@@ -36,6 +36,8 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
     
     Fuentes tipoFuentes;
     Thread gameThread;
+    
+   public ColissionChecker cChecker = new ColissionChecker(this);
     
    public Player player = new Player(this, KeyH);
      
