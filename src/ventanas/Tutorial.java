@@ -38,7 +38,7 @@ public class Tutorial extends javax.swing.JPanel implements Runnable {
     Thread gameThread;
     
    public Player player = new Player(this, KeyH);
-   public enemigo1 enemigo1;
+   //public enemigo1 enemigo1;
      
     //final int originalTileSize = 50;
     //final int scale = 2;

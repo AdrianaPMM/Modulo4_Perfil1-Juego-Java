@@ -22,7 +22,7 @@ public class Comic extends javax.swing.JPanel {
 
         initComponents();
        EstadoLabel();
-        fontDesign();
+       fontDesign();
     }
     
     

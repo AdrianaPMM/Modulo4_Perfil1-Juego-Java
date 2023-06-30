@@ -7,13 +7,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import ventanas.Principal1;
 import ventanas.Tutorial;
 import ventanas.enemigo1;
 
 public class TileManager {
     Tutorial tt;
-    Principal1 pp;
     Tile[] tile;
     public int countVidas;
             
@@ -24,13 +24,12 @@ public class TileManager {
 
     Rectangle enemigoHitBox, enemigoHitBox2, enemigoHitBox3, enemigoHitBox4, enemigoHitBox5, enemigoHitBox6, enemigoHitBox7, enemigoHitBox8, enemigoHitBox9, enemigoHitBox10; 
     
-    Rectangle shipHitBox;
+    Rectangle shipHitBox, aHitBox;
     Rectangle borderHitBox, borderHitBox2;
     
     public TileManager(Tutorial Tt)
     {
         this.tt = Tt;
-        this.pp = new Principal1();
         tile = new Tile[10];
         mapTileNum = new int[maxScreenCol][maxScreenRow];
         countVidas = 3;
@@ -62,7 +61,7 @@ public class TileManager {
         }
     }
 
-    ventanas.enemigo1 enemigo = new ventanas.enemigo1();
+   // ventanas.enemigo1 enemigo = new ventanas.enemigo1();
     public void DrawMap(Graphics2D g2)
     {
          int worldX2 = 0 * 48;
@@ -109,7 +108,7 @@ public class TileManager {
                 
                 boolean collisionb =checkCollisionFinal();
                 if (collisionb) {
-                       pp.PRUEBAMAPA("Muy bien, llegaste hasta el final, intenta el segundo nivel");
+                       //pp.PRUEBAMAPA("Muy bien, llegaste hasta el final, intenta el segundo nivel");
                        tt.player.speed = 0;
                 }
                 else
@@ -137,7 +136,18 @@ public class TileManager {
 
             if(countVidas <= 0)
             {
-                pp.PRUEBAMAPA("Te quedaste sin vidas, fallaste, intenta de nuevlo");
+                int resp = JOptionPane.showConfirmDialog(null, "lose",//<- EL MENSAJE
+        "Alerta!"/*<- El título de la ventana*/, JOptionPane.YES_OPTION/*Las opciones (si o no)*/, JOptionPane.WARNING_MESSAGE/*El tipo de ventana, en este caso WARNING*/);
+            //Si la respuesta es sí(YES_OPTION)   
+            if(resp == JOptionPane.YES_OPTION)
+               {
+               }//El valor de box2 sera 1
+            //Si la respuesta es no (NO_OPTION)
+            if(resp == JOptionPane.NO_OPTION)
+            {}//El valor de box2 sera 0
+                //pp.PRUEBAMAPA("Te quedaste sin vidas, fallaste, intenta de nuevlo");
+                countVidas = 0;
+                
             }
             else{}
               
@@ -151,6 +161,7 @@ public class TileManager {
         {
             tt.player.speed = 0;
             countVidas -= 1;
+            tt.player.worldX1 -= 100;
         }
         else
         {
@@ -160,6 +171,7 @@ public class TileManager {
              {
                    tt.player.speed = 0;
                    countVidas -= 1;
+                   tt.player.worldX1 -= 100;
              }else{
                    tt.player.speed = 20;
                     a3 = hitBoxEnemy3.intersects(shipHitBox);
@@ -167,6 +179,7 @@ public class TileManager {
              {
                    tt.player.speed = 0;
                    countVidas -= 1;
+                   tt.player.worldX1 -= 100;
              }else{
                    tt.player.speed = 20;
                    a4 = hitBoxEnemy4.intersects(shipHitBox);
@@ -174,6 +187,7 @@ public class TileManager {
              {
                    tt.player.speed = 0;
                    countVidas -= 1;
+                   tt.player.worldX1 -= 100;
              }else{
                    tt.player.speed = 20;
                          a5 = hitBoxEnemy5.intersects(shipHitBox);
@@ -181,6 +195,7 @@ public class TileManager {
              {
                    tt.player.speed = 0;
                    countVidas -= 1;
+                   tt.player.worldX1 -= 100;
              }else{
                    tt.player.speed = 20;
                    

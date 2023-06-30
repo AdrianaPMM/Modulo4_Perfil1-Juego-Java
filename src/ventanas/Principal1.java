@@ -25,7 +25,7 @@ public class Principal1 extends javax.swing.JFrame {
     Nivel5_Nubes nvl5 = new Nivel5_Nubes();
     Nivel6_Galaxia nvl6 = new Nivel6_Galaxia();
     
-    private CardLayout cardLayout;
+    public CardLayout cardLayout;
     public Principal1() {
         
         final int originalTileSize = 10;
