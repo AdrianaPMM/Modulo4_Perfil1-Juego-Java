@@ -25,10 +25,7 @@ public class Player extends Entity{
         this.keyH = keyH;
         
         screenX = (1296/2) - 100;
-        screenX2 = ((1296/2) - 100) - 100;
-        
-       
-        
+        screenX2 = ((1296/2) - 100) - 100;   
         
         setDefaultValues();
         getPlayersImage();
@@ -54,7 +51,7 @@ public class Player extends Entity{
         playerCabraY = 410;
         playerAranaY = 433;
         
-        speed = 5;
+        speed = 20;
 
         
         directionCabra = "derecha";
@@ -65,8 +62,8 @@ public class Player extends Entity{
     {
         try
         {
-            cabra1DRC = ImageIO.read(getClass().getResourceAsStream("/res/players/kabra1_DRC.png"));
-            cabra1IZQ = ImageIO.read(getClass().getResourceAsStream("/res/players/kabra1_IZQ.png"));
+            cabra1DRC = ImageIO.read(getClass().getResourceAsStream("/res/players/kabra_1_DRC.png"));
+            cabra1IZQ = ImageIO.read(getClass().getResourceAsStream("/res/players/kabra_1_IZQ.png"));
             
             cabra2DRC = ImageIO.read(getClass().getResourceAsStream("/res/players/kabra cami 2_DRC.png"));
             cabra2IZQ = ImageIO.read(getClass().getResourceAsStream("/res/players/kabra cami 2_IZQ.png"));
@@ -237,7 +234,7 @@ public class Player extends Entity{
                 count = 1;
                 int targetY = 250; // Posición final del salto
                 while (playerCabraY > targetY) {
-                    playerCabraY -= 8; // Incremento de 10 en cada iteración
+                    playerCabraY -= 10; // Incremento de 10 en cada iteración
                     directionKabra();
                     tt.repaint();
                     try {
@@ -248,7 +245,7 @@ public class Player extends Entity{
                 }
                 tt.repaint();
                 while (playerCabraY < playerCabraYORIGINAL) {
-                    playerCabraY += 8; // Incremento de 10 en cada iteración
+                    playerCabraY += 10; // Incremento de 10 en cada iteración
                     directionKabra();
                     tt.repaint();
                     try {

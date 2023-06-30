@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import javax.imageio.ImageIO;
+import ventanas.Principal1;
 import ventanas.Tutorial;
 import ventanas.enemigo1;
 
 public class TileManager {
     Tutorial tt;
+    Principal1 pp;
     Tile[] tile;
     public int countVidas;
             
@@ -20,14 +22,15 @@ public class TileManager {
         
     int mapTileNum[][];
 
-    Rectangle enemigoHitBox;
+    Rectangle enemigoHitBox, enemigoHitBox2, enemigoHitBox3, enemigoHitBox4, enemigoHitBox5, enemigoHitBox6, enemigoHitBox7, enemigoHitBox8, enemigoHitBox9, enemigoHitBox10; 
+    
     Rectangle shipHitBox;
-    Rectangle borderHitBox;
+    Rectangle borderHitBox, borderHitBox2;
     
     public TileManager(Tutorial Tt)
     {
         this.tt = Tt;
-        
+        this.pp = new Principal1();
         tile = new Tile[10];
         mapTileNum = new int[maxScreenCol][maxScreenRow];
         countVidas = 3;
@@ -89,42 +92,114 @@ public class TileManager {
                }
                g2.drawImage(tile[2].image, 100 + screenX2, 0, 100, 624, null);
                borderHitBox = new Rectangle(100 + screenX2, 0, 100, 624);
+               
+                g2.drawImage(tile[2].image, 6900 + screenX2, 0, 100, 624, null);
+               borderHitBox2 = new Rectangle(6900 + screenX2, 0, 100, 624);
                 shipHitBox = new Rectangle(tt.player.screenX, tt.player.playerCabraY, 150, 130);
-               boolean collisiona = checkCollision2();
+               
+                boolean collisiona = checkCollisionBorder();
                 if (collisiona) {
                      tt.player.speed = 0;
-                     tt.player.worldX1 += 50;
+                     tt.player.worldX1 += 100;
                 }
                 else
                 {
-                    tt.player.speed = 5;
-                }
-               
-            g2.drawImage(tile[3].image, 1000 + positionX, 450, 90, 90, null);
-            enemigoHitBox = new Rectangle(1000 + positionX, 450, 90, 90);
-                            
-             boolean collision = checkCollision();
-                if (collision) {
-                     tt.player.speed = 0;
-                     countVidas -= 1;
-                }
-                else
-                {
-                    tt.player.speed = 5;
+                    tt.player.speed = 20;
                 }
                 
-            if(countVidas == 0)
+                boolean collisionb =checkCollisionFinal();
+                if (collisionb) {
+                       pp.PRUEBAMAPA("Muy bien, llegaste hasta el final, intenta el segundo nivel");
+                       tt.player.speed = 0;
+                }
+                else
+                {
+                    tt.player.speed = 20;
+                }
+                
+                //Enemigos Colissions ---------------------------------------
+                g2.drawImage(tile[3].image, 1200 + positionX, 450, 90, 90, null);
+                enemigoHitBox = new Rectangle(1200 + positionX, 450, 90, 90);       
+                 //Enemigos Colissions ---------------------------------------2
+                g2.drawImage(tile[3].image, 2400 + positionX, 450, 90, 90, null);
+                enemigoHitBox2 = new Rectangle(2400 + positionX, 450, 90, 90);
+                //Enemigos Colissions ---------------------------------------3
+                g2.drawImage(tile[3].image, 4400 + positionX, 450, 90, 90, null);
+                enemigoHitBox3 = new Rectangle(4400 + positionX, 450, 90, 90);
+                  //Enemigos Colissions ---------------------------------------4
+                g2.drawImage(tile[3].image, 5400 + positionX, 450, 90, 90, null);
+                enemigoHitBox4 = new Rectangle(5400 + positionX, 450, 90, 90);
+                  //Enemigos Colissions ---------------------------------------4
+                g2.drawImage(tile[3].image, 6500 + positionX, 450, 90, 90, null);
+                enemigoHitBox5 = new Rectangle(6500 + positionX, 450, 90, 90);
+                checkCollision(enemigoHitBox, enemigoHitBox2, enemigoHitBox3, enemigoHitBox4,enemigoHitBox5);
+                
+
+            if(countVidas <= 0)
             {
-                
+                pp.PRUEBAMAPA("Te quedaste sin vidas, fallaste, intenta de nuevlo");
             }
+            else{}
+              
     }
     
-    public boolean checkCollision() {
-    return enemigoHitBox.intersects(shipHitBox);
+    
+    public void checkCollision(Rectangle hitBoxEnemy, Rectangle hitBoxEnemy2, Rectangle hitBoxEnemy3, Rectangle hitBoxEnemy4, Rectangle hitBoxEnemy5){//, Rectangle hitBoxEnemy6, Rectangle hitBoxEnemy7, Rectangle hitBoxEnemy8, Rectangle hitBoxEnemy9, Rectangle hitBoxEnemy10 ) {
+        boolean a1, a2, a3, a4, a5;
+        a1 = hitBoxEnemy.intersects(shipHitBox);
+        if(a1 == true)
+        {
+            tt.player.speed = 0;
+            countVidas -= 1;
+        }
+        else
+        {
+            tt.player.speed = 20;
+            a2 = hitBoxEnemy2.intersects(shipHitBox);
+             if(a2 == true)
+             {
+                   tt.player.speed = 0;
+                   countVidas -= 1;
+             }else{
+                   tt.player.speed = 20;
+                    a3 = hitBoxEnemy3.intersects(shipHitBox);
+             if(a3 == true)
+             {
+                   tt.player.speed = 0;
+                   countVidas -= 1;
+             }else{
+                   tt.player.speed = 20;
+                   a4 = hitBoxEnemy4.intersects(shipHitBox);
+             if(a4 == true)
+             {
+                   tt.player.speed = 0;
+                   countVidas -= 1;
+             }else{
+                   tt.player.speed = 20;
+                         a5 = hitBoxEnemy5.intersects(shipHitBox);
+             if(a5 == true)
+             {
+                   tt.player.speed = 0;
+                   countVidas -= 1;
+             }else{
+                   tt.player.speed = 20;
+                   
+             }
+             }
+             }
+             }
+   
+        }
+    }
+
+   
+
+    public boolean checkCollisionBorder() {
+    return borderHitBox.intersects(shipHitBox);
 }
     
-    public boolean checkCollision2() {
-    return borderHitBox.intersects(shipHitBox);
+      public boolean checkCollisionFinal() {
+    return borderHitBox2.intersects(shipHitBox);
 }
     
     public void Draw(Graphics2D g2)

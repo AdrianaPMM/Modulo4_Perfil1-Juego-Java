@@ -25,8 +25,6 @@ public class PantallaInicio extends javax.swing.JFrame {
     public PantallaInicio() {
         initComponents();
         fontDesign();
-        
-      
     }
 
     private void fontDesign()

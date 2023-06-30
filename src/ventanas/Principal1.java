@@ -63,9 +63,9 @@ public class Principal1 extends javax.swing.JFrame {
 
     }
     
-    public void PRUEBAMAPA()
+    public void PRUEBAMAPA(String message)
     {
-        int resp = JOptionPane.showConfirmDialog(null, "Te quedaste sin vidas, fallaste, intenta de nuevlo",//<- EL MENSAJE
+        int resp = JOptionPane.showConfirmDialog(null, message,//<- EL MENSAJE
         "Alerta!"/*<- El título de la ventana*/, JOptionPane.YES_OPTION/*Las opciones (si o no)*/, JOptionPane.WARNING_MESSAGE/*El tipo de ventana, en este caso WARNING*/);
             //Si la respuesta es sí(YES_OPTION)   
             if(resp == JOptionPane.YES_OPTION)
@@ -131,7 +131,7 @@ public class Principal1 extends javax.swing.JFrame {
 
     public void getBtndeTutorial()
     {
-        PRUEBAMAPA();
+        PRUEBAMAPA("lol");
          //JButton btnSiguiente2 = tutorial.getBtnSiguiente();
           //Mostramos mapa de niveles (cuando se le de clic al btn de Siguiente 2)
           /*btnSiguiente2.addActionListener(new ActionListener() {
